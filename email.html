@@ -1,0 +1,61 @@
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<div class="form">
+    <a href="index.html"><button type="button" class="btn btn-danger">Home</button></a>
+
+</div>
+<div class="form">
+    <h1>QR code for Email</h1>
+    <form>
+        <input type="email" id="website" name="website" placeholder="Email" required />
+        <input type="text" id="website2" name="website" placeholder="Subject" required />
+        <input type="text" id="website3" name="website" placeholder="Text" required />
+
+
+        <button type="button" onclick="generateQRCode()">
+      generate QR-Code
+    </button>
+    </form>
+
+    <div id="qrcode-container">
+        <div id="qrcode" class="qrcode"></div>
+        <!-- <h4>With some styles</h4> -->
+        <div id="qrcode-2" class="qrcode"></div>
+    </div>
+
+    <script type="text/javascript">
+        function generateQRCode() {
+            let website = document.getElementById("website").value;
+            let website2 = document.getElementById("website2").value;
+            let website3 = document.getElementById("website3").value;
+
+
+            if (website) {
+                let qrcodeContainer = document.getElementById("qrcode-2");
+                qrcodeContainer.innerHTML = "";
+                new QRCode(qrcodeContainer, website);
+                let qrcodeContainer2 = document.getElementById("qrcode-2");
+                qrcodeContainer2.innerHTML = "";
+                let a = website
+                let ab = website2
+                let abd = website3
+
+
+
+                new QRCode(qrcodeContainer2, {
+
+                    text: "MATMSG:TO:" + a + ";SUB:" + ab + ";SUB:" + abd,
+                    width: 128,
+                    height: 128,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+                document.getElementById("qrcode-container").style.display = "block";
+            } else {
+                alert("Iltimos TEXT kiriting!!!");
+            }
+        }
+    </script>
+</div>

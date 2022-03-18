@@ -1,0 +1,53 @@
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<div class="form">
+    <a href="index.html"><button type="button" class="btn btn-danger">Home</button></a>
+
+</div>
+<div class="form">
+    <h1>QR Code for Telephone Number</h1>
+    <form>
+        <input type="tel" id="website" name="website" placeholder="Number" required />
+
+
+
+        <button type="button" onclick="generateQRCode()">
+      Make
+    </button>
+    </form>
+
+    <div id="qrcode-container">
+        <div id="qrcode" class="qrcode"></div>
+        <!-- <h4>With some styles</h4> -->
+        <div id="qrcode-2" class="qrcode"></div>
+    </div>
+
+    <script type="text/javascript">
+        function generateQRCode() {
+            let website = document.getElementById("website").value;
+
+            if (website) {
+                let qrcodeContainer = document.getElementById("qrcode-2");
+                qrcodeContainer.innerHTML = "";
+                new QRCode(qrcodeContainer, website);
+                let qrcodeContainer2 = document.getElementById("qrcode-2");
+                qrcodeContainer2.innerHTML = "";
+                let a = website
+
+
+
+                new QRCode(qrcodeContainer2, {
+                    text: "tel:" + a,
+                    width: 128,
+                    height: 128,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+                document.getElementById("qrcode-container").style.display = "block";
+            } else {
+                alert("Iltimos TEXT kiriting!!!");
+            }
+        }
+    </script>
+</div>
